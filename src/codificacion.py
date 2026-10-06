@@ -4,9 +4,8 @@ def letra_a_posicion(letra):
         res = alfabeto.find(letra)
         return res
 def posicion_a_letra(posicion):
-    if posicion.isdigit():
-        res = alfabeto[posicion]
-        return res
+    res = alfabeto[posicion]
+    return res
 
 def cifra_cesar(cadena, clave:int):
     res = ""
@@ -18,7 +17,11 @@ def cifra_cesar(cadena, clave:int):
         cha = posicion_a_letra(s)
         res += cha
     return res
-cadena = input("Cadena:")
-clave = int(input("Clave:"))
-print(cifra_cesar(cadena, clave))
-print(cadena.find("c"))
+
+def rompe_clave(texto_codificado):
+    for clave in range(len(alfabeto)):
+        texto = cifra_cesar(texto_codificado, -clave)
+        print(f"(clave {clave}): {texto}")
+
+print(rompe_clave("cfcf"))
+
